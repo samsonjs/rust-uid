@@ -1,8 +1,5 @@
 use sysinfo::System;
 
-#[cfg(windows)]
-use sysinfo::windows;
-
 fn main() {
     let mut sys = System::new_all();
     sys.refresh_all();
@@ -35,7 +32,7 @@ fn get_uid_as_u32(uid: &sysinfo::Uid) -> u32 {
 }
 
 #[cfg(windows)]
-fn get_uid_as_u32(uid: &sysinfo::windows::sid::Sid) -> u32 {
+fn get_uid_as_u32(uid: &sysinfo::Uid) -> u32 {
     // On Windows, extract the RID from the SID
     uid.to_string()
         .rsplit('-')
