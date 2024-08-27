@@ -1,4 +1,7 @@
-use sysinfo::{System};
+use sysinfo::System;
+
+#[cfg(windows)]
+use sysinfo::windows;
 
 fn main() {
     let mut sys = System::new_all();
